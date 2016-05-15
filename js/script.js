@@ -1,4 +1,3 @@
-
 var parsedData = [];
 var dataRow = [];
 
@@ -14,7 +13,7 @@ function parseRequestData(dataIn){
     dataOut.push([
       dataRow.id,
       dataRow.originId,
-      dataRow.destinationId,
+      dataRow.destinationTrust.name,
       dataRow.patient,
       dataRow.beds_type1,
       dataRow.beds_type2,
@@ -131,7 +130,7 @@ $(document).ready(function() {
           columns: [
             { title: "id", "visible": false },
             { title: "originId" },
-            { title: "destinationId" },
+            { title: "destination" },
             { title: "patient" },
             { title: "General" },
             { title: "PICU" },
@@ -220,6 +219,8 @@ $(document).ready(function() {
       type: 'GET',
       dataType: 'json',
       success:function(results){
+        alert('Form sent successfully.');
+        document.getElementById("create").reset();
       }
     });
   })
