@@ -112,7 +112,7 @@ $(document).ready(function() {
   var referralsLoaded = false;
   function updateReferrals(){
     $.ajax({
-      url: "https://camhs-api.herokuapp.com/requests",
+      url: "https://camhs-api.herokuapp.com/requests?status=active",
       dataType: 'json',
       success:function(results){
         var parsedData = parseRequestData(results);
