@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NHS Hackathon</title>
+  <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="css/dataTables.jqueryui.min.css">
+		<link rel="stylesheet" href="_assets/css/jqm-demos.css">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <link rel="stylesheet" href="css/datatablescss.css">
+		<script src="js/jquery.js"></script>
+		<!-- <script src="_assets/js/index.js"></script> -->
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.jqueryui.min.js"></script>
+		<script src="js/script.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	</head>
+	<body>
+
+
+
+
+	<div data-role="page" id="ward-intakes">
+
+		<div data-role="header" style="overflow:hidden;">
+			<h1>Ward Referrals Made</h1>
+		<a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="#open-referrals" data-transition="slide" data-direction="reverse" data-role="button" data-theme="b">Open Referrals</a>
+					</li>
+					<li>
+						<button disabled="true" enabled="false" class="disabled" data-transition="slidefade" data-role="button" data-theme="a">Referrals Made</button>
+					</li>
+					<li>
+						<a href="#create-referrals" data-transition="slide" data-role="button" data-theme="b">New Referrals</a>
+					</li>
+					<li>
+						<a href="#overview-page" data-transition="slidefade" data-role="button" data-theme="b">Overview</a>
+					</li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+
+    <div role="main" class="ui-content">
+
+      <h3> Referrals Made </h3>
+      <div>
+        The current referrals made queue is empty.
+				<br/>(more likely it's just not yet implemented)
+
+      </div>
+    </div>
+  </div><!-- /page -->
+
+
+
+	<div data-role="page" id="open-referrals">
+		<div data-role="header" style="overflow:hidden;">
+			<h1>Open Referrals</h1>
+		<a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<button href="#open-referrals" data-transition="slidefade" data-role="button" disabled="true" enabled="false" class="disabled" data-theme="a">Open Referrals</button>
+					</li>
+					<li>
+						<a href="#ward-intakes" data-transition="slide" data-role="button" data-theme="b">Referrals Made</a>
+					</li>
+					<li>
+						<a href="#create-referrals" data-transition="slide" data-role="button" data-theme="b">New Referrals</a>
+					</li>
+					<li>
+						<a href="#overview-page" data-transition="slidefade" data-role="button" data-theme="b">Overview</a>
+					</li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+
+    <div role="main" class="ui-content">
+			<div class="pull-right">
+				<button id="acceptButton" class="ui-btn ui-btn-inline ui-icon-check ui-btn-icon-right">Accept</button>
+				<button id="rejectButton" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-right">Reject</button>
+			</div>
+      <div>
+					<table id="workList" class="display" width="100%"></table>
+      </div>
+    </div>
+  </div><!-- /page -->
+
+
+
+
+	<div data-role="page" id="create-referrals">
+
+		<div data-role="header" style="overflow:hidden;">
+			<h1>New Referral</h1>
+		<a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="#open-referrals" data-transition="slidefade" data-direction="reverse" data-role="button" data-theme="b">Open Referrals</a>
+					</li>
+					<li>
+						<a href="#ward-intakes" data-transition="slide" data-direction="reverse" data-role="button" data-theme="b">Referrals Made</a>
+					</li>
+					<li>
+						<button disabled="true" enabled="false" class="disabled" data-role="button" data-theme="a">New Referrals</button>
+					</li>
+					<li>
+						<a href="#overview-page" data-transition="slide" data-role="button" data-theme="b">Overview</a>
+					</li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+		<form id="create">
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a">
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="full-name">Full Name</label>
+						<input type="text" name="patient" id="full-name" value="">
+					</div><!-- /input -->
+
+					<div class="standard-margin">
+						<label for="dob">Date Of Birth</label>
+						<input type="date" name="age" id="dob" value="">
+					</div>
+
+					<div class="standard-margin">
+						<label for="nhs-number">NHS Number</label>
+						<input type="number" class="required" name="nhsNumber" pattern="[0-9]*" id="nhs-number" maxlength="10" value="">
+					</div><!-- /demo-html -->
+
+
+					<div class="standard-margin">
+						<label for="gender-a" class="select">Gender</label>
+						<select name="gender" id="gender" data-native-menu="false">
+							<option>Select Gender</option>
+							<option value="gender_male">Male</option>
+							<option value="gender_female">Female</option>
+							<option value="gender_other">Gender Neutral</option>
+						</select>
+					</div>
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="address">Address</label>
+						<textarea cols="80" rows="8" name="address" id="address"></textarea>
+					</div><!-- /input -->
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="postcode">Postcode</label>
+						<input type="text" name="postcode" id="postcode" value="">
+					</div><!-- /input -->
+
+
+<!--
+					<div class="standard-margin">
+						<label for="previous-surnames">Previous Surnames</label>
+						<input type="text" name="previous-surnames" id="previous-surnames" value="">
+					</div> -->
+
+
+					<!-- <div class="standard-margin">
+						<label for="religion">Religion</label>
+						<input type="text" name="religion" id="religion" value="">
+					</div>
+
+					<div class="standard-margin">
+						<label for="ethnicity">Ethnicity</label>
+						<input type="text" name="ethnicity" id="ethnicity" value="">
+					</div>
+
+					<div class="standard-margin">
+						<label for="first-language">First Language</label>
+						<input type="text" name="first-language" id="first-language" value="">
+					</div> -->
+
+
+
+				</div>  <!-- end of block a -->
+				<div class="ui-block-b">
+					<div class="standard-margin">
+						<label for="beds_type" class="select">Bed Type:</label>
+						<select name="beds_type" id="beds_type" data-native-menu="false">
+							<option>Select Service</option>
+							<option value="1">GeneralAcute</option>
+							<option value="2">PICU</option>
+							<option value="3">Secure</option>
+						</select>
+
+					</div>
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="admission-reason">Reason For Admission</label>
+						<textarea cols="40" rows="8" name="admission-reason" id="admission-reason"></textarea>
+					</div><!-- /input -->
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="admission-referrer">Referrer Name</label>
+						<input type="text" name="referredBy" id="referredBy" value="">
+					</div><!-- /input -->
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="admission-referrer">From the referrer</label>
+						<textarea cols="40" rows="8" name="admission-referrer" id="admission-referrer"></textarea>
+					</div><!-- /input -->
+
+					<!-- <div class="standard-margin">
+						<label for="admission-person">From the young person</label>
+						<textarea cols="40" rows="8" name="admission-person" id="admission-person"></textarea>
+					</div>
+
+					<div class="standard-margin">
+						<label for="admission-person">From the parent/carer</label>
+						<textarea cols="40" rows="8" name="admission-person" id="admission-person"></textarea>
+					</div> -->
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="risk-assessment">Risk Assessment</label>
+						<textarea cols="40" rows="8" name="risk-assessment" id="risk-assessment"></textarea>
+					</div><!-- /input -->
+
+					<div class="standard-margin"> <!-- input -->
+						<label for="other-details">Other Details</label>
+						<textarea cols="40" rows="8" name="other-details" id="other-details"></textarea>
+					</div><!-- /input -->
+
+				</div> <!-- end of block b -->
+			</fieldset>
+
+			<div style="display:none">
+				<input type="text" name="originId" id="originId" value="RQ8MY" class="hidden" style="display:none;">
+				<input type="text" name="destinationId" id="destinationId" value="" class="hidden" style="display:none;">
+			</div>
+		</form>
+			<button id="submit-button"> Submit </button>
+
+
+
+
+
+
+
+  </div><!-- /page -->
+
+
+
+
+
+
+
+
+
+
+  <div data-role="page" id="overview-page">
+		<div data-role="header" style="overflow:hidden;">
+			<h1>Hospitals Overview Page</h1>
+		<a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="#open-referrals" data-transition="slidefade" data-direction="reverse" data-role="button" data-theme="b">Open Referrals</a>
+					</li>
+					<li>
+						<a href="#ward-intakes" data-transition="slide" data-direction="reverse" data-role="button" data-theme="b">Referrals Made</a>
+					</li>
+					<li>
+						<a href="#create-referrals" data-transition="slide" data-direction="reverse" data-role="button" data-theme="b">New Referrals</a>
+					</li>
+					<li>
+						<button href="#overview-page" data-transition="slidefade" data-role="button" data-theme="a" disabled="true" enabled="false" class="disabled">Overview</button>
+					</li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+    <div role="main" class="ui-content">
+      <div>
+        <table id="example" class="display" width="100%"></table>
+      </div>
+    </div>
+  </div><!-- /page -->
+
+
+</body>
+</html>
